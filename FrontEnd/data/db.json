@@ -1,0 +1,74 @@
+{
+    "Users": [
+        {
+            "id": 1,
+            "first_name": "Mervin",
+            "email": "malenov0@tamu.edu",
+            "gender": "Male",
+            "image": "BlackDress.jpg"
+        },
+        {
+            "id": 2,
+            "first_name": "Rochette",
+            "email": "rvoules1@mlb.com",
+            "gender": "Female",
+            "image": "me.jpg"
+        },
+        {
+            "id": 3,
+            "first_name": "Cam",
+            "email": "catkin2@walmart.com",
+            "gender": "Female",
+            "image": "BlackDress.jpg"
+        },
+        {
+            "id": 4,
+            "first_name": "Karin",
+            "email": "kfawlks3@cpanel.net",
+            "gender": "Female",
+            "image": "BlackDress.jpg"
+        },
+        {
+            "id": 5,
+            "first_name": "Jean",
+            "email": "jjory4@4shared.com",
+            "gender": "Male",
+            "image": "me.jpg"
+        },
+        {
+            "id": 6,
+            "first_name": "Audre",
+            "email": "alynn5@homestead.com",
+            "gender": "Genderfluid",
+            "image": "BlackDress.jpg"
+        },
+        {
+            "id": 7,
+            "first_name": "Brandtr",
+            "email": "bderill6@google.fr",
+            "gender": "Male",
+            "image": "BlackDress.jpg"
+        },
+        {
+            "id": 8,
+            "first_name": "Theo",
+            "email": "tvowles7@facebook.com",
+            "gender": "Non-binary",
+            "image": "BlackDress.jpg"
+        },
+        {
+            "id": 9,
+            "first_name": "Sloane",
+            "email": "spink8@opensource.org",
+            "gender": "Male",
+            "image": "BlackDress.jpg"
+        },
+        {
+            "id": 10,
+            "first_name": "Krystal",
+            "email": "khanks9@storify.com",
+            "gender": "Female",
+            "image": "BlackDress.jpg"
+        }
+    ]
+}
