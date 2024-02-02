@@ -6,7 +6,6 @@ import { BrowserRouter as Router, Link } from "react-router-dom";
 import '../styles/MuiProductCard.css'
 import SampleNavBar from "./SampleNavBar";
 function CartListPage(props: any) {
-  console.log(props.cart[0]);
   const theme = useTheme();
 
   const mockProduct = {

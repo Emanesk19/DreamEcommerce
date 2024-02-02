@@ -14,7 +14,9 @@ import MuiFilterPannel from './components/MuiFilterPanel';
 import CartListPage from './components/Cart';
 import MuiProductCard from './components/MuiProductCard';
 import { Provider } from 'react-redux';
-import store from './redux/store';
+import store from './reduxSaga/store';
+import ReduxSaga from 'redux-saga';
+import ReduxDemo from './components/ReduxDemo';
 
 
 
@@ -67,7 +69,8 @@ function App() {
       {/* <MuiFilterPannel/> */}
       {/* <User/> */}
       <Provider store={store}>
-      <Login/>
+        <ReduxDemo/>
+      {/* <CartListPage cart={mockProduct}/> */}
       </Provider>
       {/* <MuiProductCard/> */}
     </div>

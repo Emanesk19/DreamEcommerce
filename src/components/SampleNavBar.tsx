@@ -15,7 +15,11 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
-
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import { ShoppingBagOutlined } from '@mui/icons-material';
+import '../App.css'
+import { UseSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
   borderRadius: theme.shape.borderRadius,
@@ -56,7 +60,10 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-export default function PrimarySearchAppBar() {
+export default function PrimarySearchAppBar( ) {
+  const result = useSelector((state:any)=>state.data)
+  console.warn(result);
+  
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] =
     React.useState<null | HTMLElement>(null);
@@ -198,7 +205,10 @@ export default function PrimarySearchAppBar() {
               color="inherit"
             >
               <Badge badgeContent={17} color="error">
-                <NotificationsIcon />
+              <div className="cart-div">
+                <span>{result?.length}</span>
+                <ShoppingBagOutlined/>
+            </div>
               </Badge>
             </IconButton>
             <IconButton

@@ -22,7 +22,7 @@ interface LoginProps {
   updateFormField: (field: string, value: string) => void;
   setFieldError: (field: string, error: string) => void;
 }
-const Login: React.FC<LoginProps> = ({ email, password, errors, updateFormField, setFieldError }) => {
+const Login = () => {
   const [currentPage, setCurrentPage] = useState('login');
 
   const handleSignUp = () => {
