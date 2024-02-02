@@ -1,0 +1,74 @@
+{
+    "products": [
+      {
+        "id": 1,
+        "productImage": "BEER_SCRATCHING_ONION_SET.jpg",
+        "productName": "Pork Scratchings, Pickled Onions & Beer Gift Box",
+        "price": "$675.72",
+        "rating": 3.4
+      },
+      {
+        "id": 2,
+        "productImage": "BlackShoe.jpg",
+        "productName": "BlackShoe - Stilettos Single Shoes Small Big Size Thin High Heel Shoes Women",
+        "price": "$1051.27",
+        "rating": 2.9
+      },
+      {
+        "id": 3,
+        "productImage": "ChocolateMilk.jpg",
+        "productName": "Milk - Chocolate 250 Ml",
+        "price": "$150.32",
+        "rating": 1.4
+      },
+      {
+        "id": 4,
+        "productImage": "GreyDress.jpg",
+        "productName": "Dark Gothic Elegant Dress Women Emo Alt Vintage Mesh Patchwork Lace Up High Waist Dress Y2k Harajuku Mall Goth Partywear",
+        "price": "$1025.07",
+        "rating": 4.5
+      },
+      {
+        "id": 5,
+        "productImage": "Ring1.jpg",
+        "productName": "Charm Gold Color Midi Finger Ring Set for Women Vintage Punk Boho Knuckle Party",
+        "price": "$1450.28",
+        "rating": 3.5
+      },
+      {
+        "id": 6,
+        "productImage": "RedShoe.jpg",
+        "productName": "RedShoe - Lady Sweet High Thin Heel Sandals Women ",
+        "price": "$696.67",
+        "rating": 4.9
+      },
+      {
+        "id": 7,
+        "productImage": "Spices1.jpg",
+        "productName": "Spice Set - Cumin, Cinnamon, Paprika, Turmeric, Ginger",
+        "price": "$1175.33",
+        "rating": 4.2
+      },
+      {
+        "id": 8,
+        "productImage": "wine.jpg",
+        "productName": "Wine - Red, Pinot Noir, Chateau, Chianti Wine",
+        "price": "$1956.71",
+        "rating": 4.8
+      },
+      {
+        "id": 9,
+        "productImage": "Necklace1.jpg",
+        "productName": "Silver Woman Man Crystal Diamond Necklace",
+        "price": "$3209.15",
+        "rating": 4.9
+      },
+      {
+        "id": 10,
+        "productImage": "WomansWatch.jpg",
+        "productName": "Fashion Female Clocks Women Luxury Quartz Watch Gold Stainless Steel Dress Watches Metal Strap Watches Women Rhinestone Watch Montre Femme",
+        "price": "$2000.49",
+        "rating": 3.3
+      }
+    ]
+}

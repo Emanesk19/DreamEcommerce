@@ -1,0 +1,46 @@
+.ProductCardsDiv{
+  display: flex;
+  flex-wrap: wrap;
+  align-items:flex-start;
+  gap: 10px;
+  flex-direction: row;
+}
+.ProductCard{
+  /* flex-basis: 1000%; */
+}
+.ProductCardMedia {
+    /* Add your CardMedia styles here */
+    height: 200px;
+  }
+  
+  .ProductCardTitle {
+    /* Add your Card Title styles here */
+    display: flex;
+    align-items: left;
+    justify-content: flex-start;
+  }
+  
+  .ProductCardPrice {
+    /* Add your Card Price styles here */
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    font-weight: bolder;
+  }
+  
+  .ProductCardRatingBox {
+    /* Add your Card Rating styles here */
+    border-radius: 100px;
+    background-color: #da3737;
+    width: 67px;
+  }
+  
+  .ProductCardRatingNumber{
+    color: #ffffff;
+    font-size: 18px;
+  }
+  .StarIcon {
+    /* Add your StarIcon styles here */
+    color: white;
+    /* Add other styles as needed */
+  }
