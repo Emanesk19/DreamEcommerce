@@ -17,6 +17,8 @@ import { Provider } from 'react-redux';
 import store from './reduxSaga/store';
 import ReduxSaga from 'redux-saga';
 import ReduxDemo from './components/ReduxDemo';
+import TransactionList from './components/Transaction';
+import FancyTransactionPage from './components/Transaction';
 
 
 
@@ -45,7 +47,7 @@ function App() {
   const mockProduct = [
     {
       id: 1,
-      src: "../img/BlackDress.jpg",
+      src: "./img/BlackDress.jpg",
       name: "Mock Product",
       price: 10.99,
       qty: 1,
@@ -53,15 +55,31 @@ function App() {
       description: "hello my friend let subTotShow = input?.parentNode?.parentNode?"
     },
     {
-      id: 1,
+      id: 2,
       src: "./img/WhiteDress.jpg",
-      name: "Mock Product",
+      name: "Mock Product2",
+      price: 10.99,
+      qty: 1,
+      maxQuantity: 10,
+      description: "hello my friend let subTotShow = input?.parentNode?.parentNode?"
+    },
+    {
+      id: 3,
+      src: "./img/BlackDress.jpg",
+      name: "Mock Product2",
       price: 10.99,
       qty: 1,
       maxQuantity: 10,
       description: "hello my friend let subTotShow = input?.parentNode?.parentNode?"
     }
   ];
+
+  const transactions = [
+    { id: 1, date: '2022-01-01', description: 'Purchase', amount: 100 },
+    { id: 2, date: '2022-01-05', description: 'Payment', amount: -50 },
+    { id: 3, date: '2022-01-10', description: 'Withdrawal', amount: -200 },
+  ];
+
   return (
     <ThemeProvider theme={theme}>
     <div>
@@ -69,12 +87,15 @@ function App() {
       {/* <MuiFilterPannel/> */}
       {/* <User/> */}
       <Provider store={store}>
-        <ReduxDemo/>
-      {/* <CartListPage cart={mockProduct}/> */}
+        {/* <ReduxDemo/> */}
+      <CartListPage cart={mockProduct} />
+      {/* <FancyTransactionPage/> */}
+      {/* <Login/> */}
       </Provider>
       {/* <MuiProductCard/> */}
     </div>
     </ThemeProvider>
+
   );
 }
 

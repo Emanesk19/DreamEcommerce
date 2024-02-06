@@ -3,6 +3,8 @@ import '../styles/LoginStyle.css';
 import {
   Box,
   Button,
+  Checkbox,
+  FormControlLabel,
   Grid,
   Stack,
   TextField,
@@ -29,7 +31,7 @@ const Login = () => {
     setCurrentPage('signUp');
   };
 
-  
+
 
   return (
     <div>
@@ -44,7 +46,7 @@ const Login = () => {
                     alt=""
                     style={{
                       minWidth: '100%',
-                      maxHeight: '37vw',
+                      maxHeight: '40vw',
                       objectFit: 'cover',
                       // borderRadius: '30px',
                     }}
@@ -98,6 +100,11 @@ const Login = () => {
                         }}
                       />
                     </Stack>
+                    <FormControlLabel
+                      control={<Checkbox />}
+                      label="Remember me"
+                      style={{ alignSelf: 'center', fontSize: '5px' }}
+                    />
                     <Typography variant="caption" display="block" gutterBottom>
                       <Box sx={{ textAlign: 'center', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', maxWidth: '100%' }}>
                         <a href="#" className="caption" onClick={handleSignUp} style={{ alignSelf: 'center', fontSize: '14px' }}>

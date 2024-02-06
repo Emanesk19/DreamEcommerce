@@ -52,9 +52,6 @@ function CartListPage(props: any) {
           <Grid item xs={12} md={9} lg={8}>
             <Typography sx={{
               textAlign: 'left',
-              '@media (min-width: 1400px)': {
-                marginLeft: '-120px',
-              },
             }}>
               <h3
                 style={{
@@ -67,42 +64,15 @@ function CartListPage(props: any) {
               <Box
                 sx={{
                   width: '100%',
-                  '@media (min-width: 1400px)': {
-                    width: '120%',
-                    marginLeft: -20,
-                  },
                 }}
                 className="cartShow">
-                {/* <Table
-                  sx={{ border: '1px solid', borderColor: 'grey.500' }}
-                  size="small"
-                >
-                  <thead>
-                    <tr>
-                      <th>Product Img</th>
-                      <th>Name</th>
-                      <th>Price</th>
-                      <th>Quantity</th>
-                      <th>Sub Total</th>
-                      <th>Action</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {cart?.map((product: any, idx: any) => (
-                    <Router>
-                      <ProductTrElement
-                        product={mockProduct}
-                        isWish={false}
-                        isCart={true}
-                      />
-                      </Router>
-                    ))}
-                  </tbody>
-                </Table> */}
 
                 <div className="ProductCardsDiv">
                   <Card
-                    sx={{ width: 1000 }}
+                    sx={{ width: 1000, 
+                      
+                      
+                    }}
                     key={mockProduct["id"]}
                     className="ProductCard"
                   >
@@ -135,6 +105,7 @@ function CartListPage(props: any) {
                     {cart?.map((product: any, idx: any) => (
                       <Router>
                         <ProductTrElement
+                              key={product.id}
                           product={product}
                           isWish={false}
                           isCart={true}
@@ -149,13 +120,13 @@ function CartListPage(props: any) {
           <Grid item xs={10} md={3} lg={4} sx={{
             display: 'flex', justifyContent: 'flex-end', '@media (min-width: 1400px)': {
               // width: '120%',
-              marginTop: 5
+              // marginTop: 5
             },
           }}>
             <Box
               className="cartSum"
               sx={{
-                margin: '30px',
+                // margin: '30px',
                 width: '60%',
                 height: '37vh',
                 boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.1)',
@@ -181,7 +152,7 @@ function CartListPage(props: any) {
                 <h6>Total Price :</h6>
                 <span>{totalPrice}$</span>
               </div>
-              <Button color="secondary" sx={{ mt: 0, width: '100%', bgcolor: "#da3737" }} variant="contained" >
+              <Button sx={{ mt: 0, width: '100%', bgcolor: "#da3737" }} variant="contained" >
                 Check Out
               </Button>
             </Box>

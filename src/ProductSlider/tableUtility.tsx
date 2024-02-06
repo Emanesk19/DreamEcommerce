@@ -6,6 +6,8 @@ import { useState, useEffect } from "react";
 import '../styles/MuiProductCard.css'
 import DeleteIcon from '@mui/icons-material/Delete';
 import ShoppingBasketOutlinedIcon from "@mui/icons-material/ShoppingBasketOutlined";
+import { useDispatch } from "react-redux";
+import {removeFromCart , addToCart} from '../reduxSaga/action'
 
 // import {
 //   addToCart,
@@ -15,10 +17,18 @@ import ShoppingBasketOutlinedIcon from "@mui/icons-material/ShoppingBasketOutlin
 // } from "../../redux/reducers";
 
 function ProductTrElement(props: any) {
+  const dispatch = useDispatch();
+
   const theme = useTheme();
 
+const handleDelete = () =>{
+  dispatch(removeFromCart(props.product.id))
+}
 
-  let addToCart = props.addToCart;
+const handleAdd = () =>{
+  dispatch(addToCart(props.product))
+}
+  // let addToCart = props.addToCart;
   let adjustQuantity = props.adjustQuantity;
   let deleteFromCart = props.deleteFromCart;
   let deleteFromWish = props.deleteFromWish;
@@ -128,12 +138,13 @@ function ProductTrElement(props: any) {
           <Grid item xs={3} sm={1}>
             <CardActions sx={{ justifyContent: 'center' }}>
               <IconButton>
-                <DeleteIcon fontSize="small" sx={{ color: "#da3737" }} />
+                <DeleteIcon fontSize="small" sx={{ color: "#da3737" }} onClick={handleDelete}/>
               </IconButton>
             </CardActions>
           </Grid>
         </Grid>
       </CardContent>
+      <button onClick={()=>dispatch(addToCart(props.product))}>Add to carts</button>
     </Card>
   );
 }

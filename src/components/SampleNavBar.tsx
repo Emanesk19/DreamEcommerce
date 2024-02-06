@@ -18,8 +18,9 @@ import MoreIcon from '@mui/icons-material/MoreVert';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import { ShoppingBagOutlined } from '@mui/icons-material';
 import '../App.css'
-import { UseSelector } from 'react-redux';
 import { useSelector } from 'react-redux';
+
+
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
   borderRadius: theme.shape.borderRadius,
@@ -61,8 +62,9 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export default function PrimarySearchAppBar( ) {
-  const result = useSelector((state:any)=>state.data)
-  console.warn(result);
+  const result = useSelector((state:any)=>state.cartDatas)
+  console.warn("data in heder " , result);
+  
   
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] =
@@ -206,7 +208,7 @@ export default function PrimarySearchAppBar( ) {
             >
               <Badge badgeContent={17} color="error">
               <div className="cart-div">
-                <span>{result?.length}</span>
+                <span>{result.length}</span>
                 <ShoppingBagOutlined/>
             </div>
               </Badge>

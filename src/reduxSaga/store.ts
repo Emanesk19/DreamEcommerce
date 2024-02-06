@@ -1,8 +1,17 @@
-import {createStore} from 'redux'
-import {cartAdd}from './reducer'
-const initialState:any = []; // Provide the initial state for your reducer
+import { configureStore } from '@reduxjs/toolkit';
+import createSagaMiddleware from 'redux-saga';
+import rootReducer from './rootReducer';
+import { transactionsSaga } from './transactionSaga';
+import { applyMiddleware } from 'redux';
 
-const store = createStore(cartAdd,initialState);
+const sagaMiddleware = createSagaMiddleware();
 
+const store = configureStore({
+  reducer: rootReducer,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(sagaMiddleware),
+});
 
-export default store
+sagaMiddleware.run(transactionsSaga);
+
+export default store;

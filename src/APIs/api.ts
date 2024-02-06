@@ -1,0 +1,1 @@
+export const getTransactioUrl = 'http://localhost:5182/api/transactions'

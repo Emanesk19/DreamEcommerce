@@ -1,5 +1,5 @@
 import { LoginOutlined } from '@mui/icons-material';
-import { Box, Grid, Typography, Stack, TextField, Button, useMediaQuery } from '@mui/material';
+import { Box, Grid, Typography, Stack, TextField, Button, useMediaQuery, FormControlLabel, Radio, RadioGroup } from '@mui/material';
 import React, { useState } from 'react';
 import me from "../img/WhiteDress.jpg";
 import '../styles/SignUp.css';
@@ -119,13 +119,18 @@ const SignUp = () => {
                                                         />
 
                                                     </Stack>
-                                                    <Typography variant="caption" display="block" gutterBottom>
-                                                        <Box sx={{ textAlign: 'center', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', maxWidth: '100%' }}>
+
+                                                    <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
+                                                        <RadioGroup row aria-label="account-type" name="account-type" >
+                                                            <FormControlLabel value="buyer" control={<Radio />} label="Buyer" />
+                                                            <FormControlLabel value="seller" control={<Radio />} label="Seller" />
+                                                        </RadioGroup>
+                                                        <Typography variant="caption" display="block" gutterBottom >
                                                             <a href="#" className="caption" onClick={handleLogin} style={{ alignSelf: 'center', fontSize: '14px' }}>
                                                                 Don't Have an Account? Sign Up
                                                             </a>
-                                                        </Box>
-                                                    </Typography>
+                                                        </Typography>
+                                                    </Box>
 
                                                     <Button className='buttonLogin' variant="contained"
                                                         sx={{
@@ -139,7 +144,7 @@ const SignUp = () => {
                                                                 border: '1px solid #da3737',
                                                             },
                                                         }}
-                                                        
+                                                        type='submit'
                                                         endIcon={<LoginOutlined />} >
                                                         Sign Up
                                                     </Button>
@@ -152,8 +157,7 @@ const SignUp = () => {
                         </Grid>
                     </Box>
                 ) : (
-                    <div></div>
-                    // <Login />
+                    <Login />
                 )
             }
 
