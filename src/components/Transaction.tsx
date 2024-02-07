@@ -110,7 +110,7 @@ const FancyTransactionPage = () => {
                     </TableCell>
                     <TableCell>{transaction.date}</TableCell>
                     <TableCell>{transaction.description}</TableCell>
-                    <TableCell>{transaction.purchaserCompany}</TableCell>
+                    <TableCell>{transaction.buyerId}</TableCell>
                     <TableCell
                       align="right"
                       style={{ color: transaction.amount < 0 ? '#da3737' : '#00a650' }}

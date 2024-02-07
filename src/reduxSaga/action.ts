@@ -1,4 +1,4 @@
-import { ADD_TO_Cart } from "./constants"
+import { ADD_TO_Cart, ADJUST_QUANTITY } from "./constants"
 import {REMOVE_FROM_Cart} from "./constants"
 
 export const addToCart = (data:any)=>{
@@ -9,6 +9,16 @@ export const addToCart = (data:any)=>{
     }
 }
 
+export const adjustQuantity = (itemID:any, value:any) => {
+    return {
+      type: ADJUST_QUANTITY,
+      payload: {
+        id: itemID,
+        qty: value,
+      },
+    };
+  };
+  
 export const removeFromCart = (data:any)=>{
     console.warn("remove from cart action is called " , data)
     return{

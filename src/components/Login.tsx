@@ -14,24 +14,41 @@ import me from '../img/WhiteDress.jpg';
 import { LoginOutlined } from '@mui/icons-material';
 import SignUp from './SignUp';
 import { connect } from 'react-redux';
-import { updateFormField, setFieldError } from '../redux/action';
-import { FormState } from '../redux/reducers'; // Import the FormState interface
+import { updateFormField, setFieldError, loginRequest } from '../reduxSaga/loginAction';
+import { useNavigate } from 'react-router-dom';
 
-interface LoginProps {
-  email: string;
-  password: string;
-  errors: Record<string, string>;
-  updateFormField: (field: string, value: string) => void;
-  setFieldError: (field: string, error: string) => void;
-}
-const Login = () => {
+const Login = ({ form, updateFormField, loginRequest, setFieldError }:any) => {
   const [currentPage, setCurrentPage] = useState('login');
+  const [error, setError] = useState('');
+  const [rememberMe, setRememberMe] = useState(false);
+
+    const navigate = useNavigate();
+
+  const handleSubmit = (e:any) => {
+    e.preventDefault();
+
+    // Form validation
+    if (!form?.email) {
+      setError('Email is required');
+      setFieldError('email', 'Email is required');
+      return;
+    }
+
+    if (!form?.password) {
+      setError('Password is required');
+      setFieldError('password', 'Password is required');
+      return;
+    }
+
+    // Dispatch login request
+    loginRequest(form?.email, form?.password, rememberMe);
+
+    
+  };
 
   const handleSignUp = () => {
     setCurrentPage('signUp');
   };
-
-
 
   return (
     <div>
@@ -56,7 +73,15 @@ const Login = () => {
                 {/* Text boxes */}
                 <Box className="stackStyle">
                   <Typography variant="h4" component="h4" gutterBottom>
-                    <Box sx={{ textAlign: 'center', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', maxWidth: '100%' }}>
+                    <Box
+                      sx={{
+                        textAlign: 'center',
+                        overflow: 'hidden',
+                        textOverflow: 'ellipsis',
+                        whiteSpace: 'nowrap',
+                        maxWidth: '100%',
+                      }}
+                    >
                       <b style={{ fontSize: '20px' }}>
                         <i>Welcome Back</i>{' '}
                       </b>
@@ -64,6 +89,7 @@ const Login = () => {
                   </Typography>
 
                   <Box
+                    onSubmit={handleSubmit}
                     component="form"
                     method="POST"
                     sx={{
@@ -85,6 +111,11 @@ const Login = () => {
                             borderRadius: '20px',
                           },
                         }}
+                        value={form?.email}
+                        onChange={(e) => {
+                          console.log('Login - Email Change:', e.target.value);
+                          updateFormField('email', e.target.value);
+                        }}
                       />
                       <TextField
                         required
@@ -98,25 +129,59 @@ const Login = () => {
                             borderRadius: '20px',
                           },
                         }}
+                        value={form?.password}
+                        onChange={(e) => {
+                          console.log('Login - Password Change:', e.target.value);
+                          updateFormField('password', e.target.value);
+                        }}
                       />
                     </Stack>
                     <FormControlLabel
                       control={<Checkbox />}
                       label="Remember me"
                       style={{ alignSelf: 'center', fontSize: '5px' }}
-                    />
+                      onChange={(e) => setRememberMe((e.target as HTMLInputElement).checked)}
+                      />
                     <Typography variant="caption" display="block" gutterBottom>
-                      <Box sx={{ textAlign: 'center', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', maxWidth: '100%' }}>
-                        <a href="#" className="caption" onClick={handleSignUp} style={{ alignSelf: 'center', fontSize: '14px' }}>
+                      <Box
+                        sx={{
+                          textAlign: 'center',
+                          overflow: 'hidden',
+                          textOverflow: 'ellipsis',
+                          whiteSpace: 'nowrap',
+                          maxWidth: '100%',
+                        }}
+                      >
+                        <a
+                          href="/###"
+                          className="caption"
+                          onClick={handleSignUp}
+                          style={{ alignSelf: 'center', fontSize: '14px' }}
+                        >
                           Don't Have an Account? Sign Up
                         </a>
                       </Box>
                     </Typography>
+                    {error && (<Typography variant="caption" display="block" gutterBottom sx={{color:'red'}}>
+                      <Box
+                        sx={{
+                          textAlign: 'center',
+                          overflow: 'hidden',
+                          textOverflow: 'ellipsis',
+                          whiteSpace: 'nowrap',
+                          maxWidth: '100%',
+
+                        }}
+                      >
+                      </Box>
+                      {error}
+
+                    </Typography>)}
                     <Button
                       className="buttonLogin"
                       variant="contained"
                       sx={{
-                        margin: '10px 0 0 0',
+                        margin: '10px 0 0',
                         bgcolor: '#da3737',
                         border: '1px solid #da3737',
                         alignSelf: 'center',
@@ -127,32 +192,33 @@ const Login = () => {
                         },
                       }}
                       endIcon={<LoginOutlined />}
-                      type='submit'
-                    >
-                      Login
-                    </Button>
-                  </Box>
-                </Box>
+                      onClick={handleSubmit}
+                >
+                  Log In
+                </Button>
               </Box>
-            </Grid>
-          </Grid>
-        </Box>
-      ) : (
-        <SignUp />
-      )}
-    </div>
-  );
+            </Box>
+          </Box>
+        </Grid>
+      </Grid>
+    </Box>
+  ) : (
+    // <SignUp setCurrentPage={setCurrentPage} />
+    <SignUp/>
+  )}
+</div>
+  )
+}
+
+const mapStateToProps = (state:any) => {
+  return {
+    form: state.form, // Assuming `form` is the slice of state containing the form data
+  };
 };
 
-const mapStateToProps = (state: FormState) => ({
-  email: state.email,
-  password: state.password,
-  errors: state.errors,
-});
-
-const mapDispatchToProps = {
+const ConnectedLogin = connect(mapStateToProps, {
   updateFormField,
   setFieldError,
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+  loginRequest,
+})(Login);
+export default ConnectedLogin

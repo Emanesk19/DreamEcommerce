@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { Avatar, Button, Card, CardActions, CardContent, CardHeader, CardMedia, Collapse, IconButton, IconButtonProps, ThemeProvider, Typography, createTheme, styled } from '@mui/material';
@@ -19,7 +19,10 @@ import ReduxSaga from 'redux-saga';
 import ReduxDemo from './components/ReduxDemo';
 import TransactionList from './components/Transaction';
 import FancyTransactionPage from './components/Transaction';
-
+import { alovaInstance } from './APIs/api';
+import { setFieldError, updateFormField } from './reduxSaga/loginAction';
+import { BrowserRouter as Router, Routes } from 'react-router-dom'
+import RoutesPath from './Route/Routes';
 
 
 interface ExpandMoreProps extends IconButtonProps {
@@ -79,18 +82,37 @@ function App() {
     { id: 2, date: '2022-01-05', description: 'Payment', amount: -50 },
     { id: 3, date: '2022-01-10', description: 'Withdrawal', amount: -200 },
   ];
-
+  const [data, setData] = useState<any>(null);
+  // useEffect(() => {
+  //   alovaInstance
+  //     .Get('http://localhost:5182/api/transactions')
+  //     .then((response:any) => response)
+  //     .then(text => {
+  //       setData(text);
+  //       console.log(text);
+        
+  //     });
+  // }, []);
+  console.log("from alova "  , data);
+  
+  
   return (
+    
     <ThemeProvider theme={theme}>
     <div>
       {/* <CartListPage cart={mockProduct} /> */}
       {/* <MuiFilterPannel/> */}
       {/* <User/> */}
       <Provider store={store}>
+        <Router>
+        {/* <div>
+          {data!.id}
+        </div> */}
         {/* <ReduxDemo/> */}
-      <CartListPage cart={mockProduct} />
+      {/* <CartListPage cart={mockProduct} /> */}
       {/* <FancyTransactionPage/> */}
-      {/* <Login/> */}
+      <Login updateFormField={updateFormField} setFieldError={setFieldError} />
+      </Router>
       </Provider>
       {/* <MuiProductCard/> */}
     </div>
@@ -100,3 +122,4 @@ function App() {
 }
 
 export default App;
+

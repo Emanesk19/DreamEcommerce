@@ -2,7 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import createSagaMiddleware from 'redux-saga';
 import rootReducer from './rootReducer';
 import { transactionsSaga } from './transactionSaga';
-import { applyMiddleware } from 'redux';
+import formSaga from './loginSaga';
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -13,5 +13,5 @@ const store = configureStore({
 });
 
 sagaMiddleware.run(transactionsSaga);
-
+sagaMiddleware.run(formSaga)
 export default store;

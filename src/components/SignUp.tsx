@@ -87,7 +87,7 @@ const SignUp = () => {
                                                             borderRadius: '20px',
                                                             '& .MuiOutlinedInput-root': {
                                                                 borderRadius: '20px',
-                                                                width: isDesktop ? '54ch' : (isTablet ? '72ch' : '40ch')
+                                                                
                                                             },
                                                         }}
                                                     />
@@ -126,7 +126,7 @@ const SignUp = () => {
                                                             <FormControlLabel value="seller" control={<Radio />} label="Seller" />
                                                         </RadioGroup>
                                                         <Typography variant="caption" display="block" gutterBottom >
-                                                            <a href="#" className="caption" onClick={handleLogin} style={{ alignSelf: 'center', fontSize: '14px' }}>
+                                                            <a href="/######" className="caption" onClick={handleLogin} style={{ alignSelf: 'center', fontSize: '14px' }}>
                                                                 Don't Have an Account? Sign Up
                                                             </a>
                                                         </Typography>

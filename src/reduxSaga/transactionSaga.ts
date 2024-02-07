@@ -1,19 +1,23 @@
 import { takeEvery, call, put } from 'redux-saga/effects';
 import { FETCH_TRANSACTIONS } from './constants';
 import { setTransactions } from './transactionActions';
+import { getTransactioUrl, alovaInstance } from '../APIs/api';
 import axios from 'axios';
-import {getTransactioUrl} from '../APIs/api'
 
-function* fetchTransactionsSaga(): Generator {
+function* fetchTransactionsSaga():Generator {
   try {
     const response:any = yield call(axios.get, getTransactioUrl);
-    const transactions = response.data;  
-    console.log('Saga - fetchTransactionsSaga - transactions:', transactions); // Check the transactions data  
-    yield put(setTransactions(transactions));
-    console.log('Saga - fetchTransactionsSaga - SET_TRANSACTIONS dispatched'); // Check if SET_TRANSACTIONS is dispatched
-    
-      } catch (error) {
-    console.error(error);
+    console.log('Saga - fetchTransactionsSaga - transactions:', response); // Check the transactions data  
+    if (response && response.data) {
+      yield put(setTransactions(response.data));
+      console.log('Saga - fetchTransactionsSaga - SET_TRANSACTIONS dispatched'); // Check if SET_TRANSACTIONS is dispatched
+    } else {
+      console.error('Saga - fetchTransactionsSaga - Invalid response:', response);
+      // Handle the case when the response or its data is missing or invalid
+    }
+  } catch (error) {
+    console.error('Saga - fetchTransactionsSaga - Error:', error);
+    // Handle the error case appropriately
   }
 }
 
